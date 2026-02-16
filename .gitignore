@@ -1,0 +1,23 @@
+# Dependencias
+node_modules/
+
+# Build outputs
+styles/output.css
+dist/
+build/
+
+# Pear
+*.pear
+pear-data/
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

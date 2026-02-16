@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Store P2P</title>
+        <link href="./styles/output.css" rel="stylesheet" />
+        <style>
+            #bar {
+                background: #405b40;
+                height: 42px;
+                -webkit-app-region: drag;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+            #content {
+                margin-top: 42px;
+            }
+        </style>
+    </head>
+    <body class="bg-gray-50">
+        <div id="bar"><pear-ctrl></pear-ctrl></div>
+        <div id="content">
+            <div id="root"></div>
+        </div>
+        <script type="module" src="./app.js"></script>
+    </body>
+</html>
