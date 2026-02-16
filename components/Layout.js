@@ -1,7 +1,7 @@
 // components/Layout.js
 import React from "react";
 
-function Layout({ children, titulo }) {
+function Layout({ children, titulo, usuario, onLogout, onNavigate }) {
   return React.createElement(
     "div",
     { className: "min-h-screen bg-gradient-to-br from-gray-50 to-gray-100" },
@@ -12,6 +12,7 @@ function Layout({ children, titulo }) {
       React.createElement(
         "div",
         { className: "max-w-7xl mx-auto flex justify-between items-center" },
+        // Logo y título
         React.createElement(
           "div",
           { className: "flex items-center gap-3" },
@@ -22,27 +23,61 @@ function Layout({ children, titulo }) {
             "Store P2P",
           ),
         ),
+        // Navegación y usuario
         React.createElement(
           "div",
           { className: "flex items-center gap-4" },
+          // Botones de navegación
           React.createElement(
             "button",
-            { className: "text-white hover:text-gray-200 transition" },
+            {
+              onClick: () => onNavigate("productos"),
+              className: "text-white hover:text-gray-200 transition",
+            },
             "Productos",
           ),
           React.createElement(
             "button",
-            { className: "text-white hover:text-gray-200 transition" },
+            {
+              onClick: () => onNavigate("pedidos"),
+              className: "text-white hover:text-gray-200 transition",
+            },
             "Pedidos",
           ),
-          React.createElement(
-            "button",
-            {
-              className:
-                "bg-white text-primary px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition",
-            },
-            "Login",
-          ),
+          // Si hay usuario, mostramos sus datos y botón salir
+          usuario &&
+            React.createElement(
+              "div",
+              {
+                className:
+                  "flex items-center gap-3 ml-4 pl-4 border-l border-white/30",
+              },
+              React.createElement(
+                "span",
+                { className: "text-sm" },
+                usuario.email || usuario.id.slice(0, 8),
+              ),
+              React.createElement(
+                "button",
+                {
+                  onClick: onLogout,
+                  className:
+                    "bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition",
+                },
+                "Salir",
+              ),
+            ),
+          // Si NO hay usuario, mostramos botón login
+          !usuario &&
+            React.createElement(
+              "button",
+              {
+                onClick: () => onNavigate("login"),
+                className:
+                  "bg-white text-primary px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition",
+              },
+              "Login",
+            ),
         ),
       ),
     ),

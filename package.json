@@ -29,6 +29,7 @@
     "tailwindcss": "^4.1.18"
   },
   "dependencies": {
+    "bip39": "^2.5.0",
     "pear-bridge": "^1.2.1",
     "pear-electron": "^1.7.25",
     "pear-messages": "^1.0.3",

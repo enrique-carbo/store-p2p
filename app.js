@@ -9,11 +9,11 @@ import wakeups from "pear-wakeups";
 import Layout from "./components/Layout.js";
 import Dashboard from "./components/Dashboard.js";
 import Productos from "./components/Productos.js";
-import Login from "./components/Login.js";
+import LoginReal from "./components/LoginReal.js";
 
 function App() {
   const [vista, setVista] = React.useState("dashboard");
-  const [logueado, setLogueado] = React.useState(false);
+  const [usuario, setUsuario] = React.useState(null);
   const [mensaje, setMensaje] = React.useState("Cargando...");
 
   React.useEffect(() => {
@@ -28,14 +28,22 @@ function App() {
     cargarInfo();
   }, []);
 
-  const handleLogin = (credenciales) => {
-    // Mock login (después implementaremos el real)
-    console.log("Login con:", credenciales);
-    setLogueado(true);
+  const handleLogin = (datos) => {
+    // En producción, aquí derivaríamos la clave pública/privada
+    console.log("Usuario autenticado:", datos);
+    setUsuario({
+      id: datos.frase.slice(0, 8), // Esto después será la clave pública
+      email: datos.email || "anon@local",
+      frase: datos.frase,
+    });
   };
 
-  if (!logueado) {
-    return React.createElement(Login, { onLogin: handleLogin });
+  const handleLogout = () => {
+    setUsuario(null);
+  };
+
+  if (!usuario) {
+    return React.createElement(LoginReal, { onLogin: handleLogin });
   }
 
   let contenido;
@@ -45,7 +53,12 @@ function App() {
 
   return React.createElement(
     Layout,
-    { titulo: vista === "dashboard" ? "Dashboard" : "Productos" },
+    {
+      titulo: vista === "dashboard" ? "Dashboard" : "Productos",
+      usuario: usuario,
+      onLogout: handleLogout,
+      onNavigate: setVista,
+    },
     contenido,
   );
 }
