@@ -8,8 +8,8 @@
     "type": "desktop",
     "gui": {
       "main": "index.html",
-      "width": 900,
-      "height": 500,
+      "width": 1000,
+      "height": 700,
       "minWidth": 500
     }
   },

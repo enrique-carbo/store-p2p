@@ -1,7 +1,7 @@
 # Store P2P 🛍️
 
 **Plataforma de e-commerce descentralizada peer-to-peer.**  
-Dueños de tiendas y clientes se conectan directamente. **Sin servidores, sin comisiones, sin depender de gigantes tecnológicos.**
+Dueños de tiendas y clientes se conectan directamente. **Sin servidores, sin comisiones.**
 
 ## ✨ Características
 
@@ -53,7 +53,7 @@ Este proyecto **no usa ningún servidor central**. Ni para autenticación, ni pa
     "ed25519": "^0.0.5"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.0",
+    "tailwindcss": "^4.1.18",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.0"
   }
@@ -239,7 +239,6 @@ Apache-2.0
 - [Holepunch](https://holepunch.to) por Pear Runtime
 - La comunidad Hypercore Protocol
 - Todos los que creen en un internet más descentralizado
-- **Vos**, por leer hasta acá y animarte a lo nuevo
 
 ## ⚠️ Advertencia
 
